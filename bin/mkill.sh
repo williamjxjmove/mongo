@@ -1,5 +1,4 @@
 #! /bin/bash
-# mongo test --eval "printjson(db.getCollectionNames())"
 
 # pkill is better, and kill -2 or -15?
 ps -ef | grep mongod |grep -v grep | awk '{print $2}' | while read pid 

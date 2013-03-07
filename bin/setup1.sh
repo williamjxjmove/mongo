@@ -32,7 +32,6 @@ else
 	sudo usermod -a -G mongod $USER
 fi
 
-exit;
 
 mongod --config ${EXEC_DIR}/etc/replica_set1.conf
 

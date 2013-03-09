@@ -1,5 +1,25 @@
 # MongoDB Replica Set Auto-processing.
 
+## Initialize:
+
+### get singleton directory from github.com or rpm 
+(1) from git@github.com:MoveInc/CRM-Platform-Services.git
+
+The source is located: CRM-Platform-Services / demo / mongoReplicaSet /
+<pre>
+$ get pull the project
+$ cp -r mongoReplicaSet/* $HOME/mongo
+$ cd ~/mongo/
+</pre>
+
+### 2. from rpm file:
+<pre>
+$ cd /home/movedev/rpmbuild/SRPMS
+$ rpm -Uvh mongoReplicaSet-1.0-1.el6.src.rpm
+$ cd ~/mongo/
+</pre>
+
+
 ## Setup:
 <pre>
 $ cd ~
@@ -54,3 +74,30 @@ mkdir -p m1 m2 m3
 
 </pre>
 
+
+<pre>
+To start it:
+$ sudo service repset start
+$ sudo service repset restart
+$ sudo /home/movedev/mongo/bin/repset.sh start
+$ sudo /home/movedev/mongo/bin/repset.sh restart
+
+To stop it:
+$ sudo service repset stop
+$ sudo /home/movedev/mongo/bin/repset.sh stop
+
+
+To check logs:
+$ cd /home/movedev/mongo/log
+$ tail -f ...
+
+To use mongo shell:
+$ mongo --port 29101
+$ mongo localhost:29102
+$ mongo --port 29103
+
+$ ps -ef | grep mongod | grep -v grep
+mongod   12709     1  0 15:05 ?        00:00:00 /usr/bin/mongod -f /home/movedev/mongo/etc/replica_set1.conf
+mongod   12757     1  0 15:05 ?        00:00:00 /usr/bin/mongod -f /home/movedev/mongo/etc/replica_set2.conf
+mongod   12805     1  0 15:05 ?        00:00:00 /usr/bin/mongod -f /home/movedev/mongo/etc/replica_set3.conf
+</pre>
